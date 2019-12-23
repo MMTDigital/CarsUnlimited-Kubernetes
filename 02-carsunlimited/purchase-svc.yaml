@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: carstore-purchase-service
+spec:
+  selector:
+    app: carstore-purchase
+  ports:
+  - port: 80
+    targetPort: 80

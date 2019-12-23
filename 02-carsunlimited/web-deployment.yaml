@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carsunlimited-web-deployment
+  labels:
+    app: carstore-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carstore-web
+  template:
+    metadata:
+      labels:
+        app: carstore-web
+    spec:
+      containers:
+      - name: cart
+        image: lgcarsunltdacr.azurecr.io/dockerworkshop/web:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNET_ENVIRONMENT
+          value: "Development"
+        - name: PurchaseApi
+          value: "http://carstore-purchase-service.default.svc.cluster.local"
+        - name: InventoryApi
+          value: "http://carstore-inventory-service.default.svc.cluster.local"
+        - name: CartApi
+          value: "http://carstore-cart-service.default.svc.cluster.local"
+        - name: PurchaseApiKey
+          value: "TOBEREPLACED"
+        - name: InventoryApiKey
+          value: "ALSOTOBEREPLACED"
+        - name: CartApiKey
+          value: ANOTHERONETOBEREPLACED

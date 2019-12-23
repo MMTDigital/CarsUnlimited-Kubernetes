@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carsunlimited-inventory-deployment
+  labels:
+    app: carstore-inventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carstore-inventory
+  template:
+    metadata:
+      labels:
+        app: carstore-inventory
+    spec:
+      containers:
+      - name: cart
+        image: lgcarsunltdacr.azurecr.io/dockerworkshop/inventory:latest
+        ports:
+        - containerPort: 80
+        env:
+          - name: MyApiKey
+            value: "ALSOTOBEREPLACED"
+          - name: StorageConnectionString
+            value: "REPLACEME"

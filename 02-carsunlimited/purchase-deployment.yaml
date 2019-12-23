@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carsunlimited-purchase-deployment
+  labels:
+    app: carstore-purchase
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carstore-purchase
+  template:
+    metadata:
+      labels:
+        app: carstore-purchase
+    spec:
+      containers:
+      - name: cart
+        image: lgcarsunltdacr.azurecr.io/dockerworkshop/purchase:latest
+        ports:
+        - containerPort: 80
+        env:
+          - name: MyApiKey
+            value: "TOBEREPLACED"
+          - name: CartApiKey
+            value: "ANOTHERONETOBEREPLACED"
+          - name: InventoryApiKey
+            value: "ALSOTOBEREPLACED"
+          - name: InventoryApi
+            value: "http://carstore-inventory-service.default.svc.cluster.local"
+          - name: CartApi
+            value: "http://carstore-cart-service.default.svc.cluster.local"
+          - name: SendGridApiKey
+            value: "{ReplaceWithSendGridApiKey}"
