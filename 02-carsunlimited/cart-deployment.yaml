@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cart
-        image: lgcarsunltdacr.azurecr.io/dockerworkshop/cart:latest
+        image: <url to image>
         ports:
         - containerPort: 80
         env:
@@ -24,3 +24,6 @@ spec:
             value: "ANOTHERONETOBEREPLACED"
           - name: StorageConnectionString
             value: "REPLACEME"
+      imagePullSecrets:
+        - name: <name of your secret>
+

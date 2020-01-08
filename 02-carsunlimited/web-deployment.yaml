@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cart
-        image: lgcarsunltdacr.azurecr.io/dockerworkshop/web:latest
+        image: <url to image>
         ports:
         - containerPort: 80
         env:
@@ -34,3 +34,5 @@ spec:
           value: "ALSOTOBEREPLACED"
         - name: CartApiKey
           value: ANOTHERONETOBEREPLACED
+      imagePullSecrets:
+        - name: <name of your secret>

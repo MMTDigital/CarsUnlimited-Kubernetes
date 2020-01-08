@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cart
-        image: lgcarsunltdacr.azurecr.io/dockerworkshop/purchase:latest
+        image: <url to image>
         ports:
         - containerPort: 80
         env:
@@ -32,3 +32,5 @@ spec:
             value: "http://carstore-cart-service.default.svc.cluster.local"
           - name: SendGridApiKey
             value: "{ReplaceWithSendGridApiKey}"
+      imagePullSecrets:
+        - name: <name of your secret>
