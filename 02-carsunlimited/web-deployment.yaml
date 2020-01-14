@@ -15,7 +15,7 @@ spec:
         app: carstore-web
     spec:
       containers:
-      - name: cart
+      - name: web
         image: <url to image>
         ports:
         - containerPort: 80
